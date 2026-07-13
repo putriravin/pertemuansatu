@@ -1,23 +1,38 @@
 @extends('layouts.app')
 
-@section('title', $title)
+@section('title', 'Keahlian')
 
 @section('content')
+
     <div class="card">
-        <h2>Keahlian (Skills)</h2>
-        <p class="text-muted">Keahlian yang didapatkan melalui perkuliahan dan belajar mandiri.</p>
-        
-        <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px;">
+        <p class="card-title">Keahlian (Skills)</p>
+        <p style="margin-bottom: 20px;">
+            Berikut adalah keahlian yang sudah saya pelajari selama perkuliahan
+            maupun dari belajar mandiri di luar kelas.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
             @foreach($skills as $skill)
-                <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #e0dfdc; padding: 8px 16px; border-radius: 20px; background-color: white;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#0a66c2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span style="font-weight: 600; font-size: 14px;">{{ $skill }}</span>
-                </div>
+                <span style="
+                    background-color: #edf2ff;
+                    color: #1b3a6b;
+                    border: 1px solid #c5d5f5;
+                    padding: 6px 18px;
+                    border-radius: 20px;
+                    font-size: 13px;
+                    font-weight: 600;
+                ">{{ $skill }}</span>
             @endforeach
         </div>
-        
-        <hr>
-        <h3 style="font-size: 16px;">Endorsements</h3>
-        <p class="text-muted">Belum ada endorsement.</p>
     </div>
+
+    <div class="card">
+        <p class="card-title">Catatan</p>
+        <p>
+            Keahlian di atas masih dalam tahap belajar dan terus saya kembangkan.
+            Saya menyadari masih banyak hal yang perlu dipelajari, dan saya terus
+            berusaha meningkatkan kemampuan saya baik melalui perkuliahan maupun
+            dari sumber belajar mandiri seperti YouTube dan dokumentasi resmi Laravel.
+        </p>
+    </div>
+
 @endsection
