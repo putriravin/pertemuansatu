@@ -1,177 +1,44 @@
-# Praktikum Web II - Modul 1
-## Instalasi dan Konfigurasi Environment Laravel
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+
+## Tugas Praktikum Web II - Modul 1
+
+**Nama:** Putri Ravin Nauli  
+**NPM:** 238160073  
+**Alamat:** Jalan Pancing, Sekitar Universitas Medan Area  
+
+Repositori ini dibuat untuk memenuhi tugas instalasi Laravel pada Modul 1 Praktikum Aplikasi Berbasis Web II.
+
+### Status Tugas:
+- [x] Instalasi Laravel menggunakan Composer
+- [x] Konfigurasi environment (file `.env`)
+- [x] Membuat database
+- [x] Menjalankan Laravel development server
+- [x] First commit dan push project ke GitHub
 
 ---
 
-### 📋 Identitas Mahasiswa
+## About Laravel
 
-| Field | Detail |
-|-------|--------|
-| **Nama** | PUTRI RAVIN NAULI |
-| **NPM** | 238160073 |
-| **Alamat** | Jalan Pancing, Sekitar Universitas Medan Area |
-| **Mata Kuliah** | Praktikum Aplikasi Berbasis Web II |
-| **Prodi** | Teknik Informatika |
-| **Fakultas** | Fakultas Teknik |
-| **Universitas** | Universitas Medan Area |
-| **Tahun** | 2024 |
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
----
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-### 🎯 Tujuan Pembelajaran
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-- Memahami apa itu Laravel dan kelebihannya
-- Menginstall Laravel dan menyiapkan lingkungan pengembangan
-- Repository GIT-HUB source
+## Learning Laravel
 
-### ⚙️ Aktivitas Praktikum
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- ✅ Instalasi Laravel melalui Composer
-- ✅ Konfigurasi file `.env` untuk database dan environment lainnya
-- ✅ Menjalankan Laravel development server
-- ✅ First Commit ke GitHub
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
----
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Up your skill level by digging into our comprehensive video library.
 
-### 🛠️ Requirement Sistem
+## License
 
-| Komponen | Versi |
-|----------|-------|
-| PHP | 8.2.12 |
-| Composer | 2.x |
-| Laravel | 12.x |
-| MySQL/MariaDB | 10.4.32 (via XAMPP) |
-
----
-
-### 🚀 Cara Instalasi
-
-#### 1. Install Composer
-Unduh dan instal dari [https://getcomposer.org/](https://getcomposer.org/)
-
-Verifikasi instalasi:
-```bash
-composer -v
-```
-
-#### 2. Install Laravel
-```bash
-composer create-project laravel/laravel putri_ravin_nauli
-```
-
-#### 3. Konfigurasi File `.env`
-Sesuaikan konfigurasi database pada file `.env`:
-```env
-APP_NAME=putri_ravin_nauli
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=putri_ravin_nauli
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-#### 4. Generate App Key
-```bash
-php artisan key:generate
-```
-
-#### 5. Buat Database
-Buat database `putri_ravin_nauli` melalui PhpMyAdmin atau jalankan:
-```sql
-CREATE DATABASE IF NOT EXISTS putri_ravin_nauli 
-  CHARACTER SET utf8mb4 
-  COLLATE utf8mb4_unicode_ci;
-```
-
-#### 6. Jalankan Migrasi
-```bash
-php artisan migrate
-```
-
-#### 7. Jalankan Development Server
-```bash
-php artisan serve
-```
-
-Akses di browser: [http://localhost:8000](http://localhost:8000)
-
----
-
-### 📁 Struktur Direktori Laravel
-
-```
-putri_ravin_nauli/
-├── app/                    # Logika utama aplikasi (Models, Controllers, dll)
-│   ├── Console/            # Perintah Artisan kustom
-│   ├── Exceptions/         # Exception handler
-│   ├── Http/               # Controllers, Middleware, Requests
-│   └── Models/             # Model Eloquent ORM
-├── bootstrap/              # File bootstrap dan cache aplikasi
-├── config/                 # File konfigurasi aplikasi
-├── database/               # Migrasi, seeder, dan factory
-│   ├── factories/          # Factory untuk data dummy
-│   ├── migrations/         # File migrasi tabel database
-│   └── seeders/            # Data awal (seeder)
-├── public/                 # Entry point aplikasi (index.php, aset publik)
-├── resources/              # Views (Blade), CSS, JS sumber
-│   ├── css/                # File CSS
-│   ├── js/                 # File JavaScript
-│   └── views/              # Template Blade
-├── routes/                 # Definisi rute aplikasi
-│   ├── api.php             # Rute API
-│   ├── console.php         # Rute konsol
-│   └── web.php             # Rute web
-├── storage/                # File yang di-generate, log, cache, upload
-├── tests/                  # Unit dan Feature test
-├── vendor/                 # Dependensi Composer (jangan diedit)
-├── .env                    # Konfigurasi environment (tidak di-commit)
-├── .gitignore              # File yang diabaikan Git
-├── artisan                 # CLI Laravel
-├── composer.json           # Dependensi PHP
-└── vite.config.js          # Konfigurasi Vite (asset bundler)
-```
-
----
-
-### 🗃️ Konfigurasi Database
-
-Database yang digunakan: **putri_ravin_nauli**
-
-Tabel yang dibuat setelah migrasi:
-- `users` - Data pengguna aplikasi
-- `cache` - Penyimpanan cache
-- `jobs` - Queue jobs
-
----
-
-### 📤 Git & GitHub
-
-```bash
-# Inisialisasi repositori
-git init
-
-# Tambahkan semua file ke staging
-git add .
-
-# Commit pertama
-git commit -m "Initial commit - Modul 1 Praktikum Web II"
-
-# Tambahkan remote GitHub
-git remote add origin https://github.com/putriravin/putri_ravin_nauli.git
-
-# Push ke GitHub
-git push -u origin main
-```
-
----
-
-### 📌 Referensi
-
-- [Laravel Documentation](https://laravel.com/docs)
-- [Composer](https://getcomposer.org)
-- [GitHub](https://github.com)
-
----
-
-*Modul Praktikum Aplikasi Berbasis Web II | Teknik Informatika | Universitas Medan Area | 2024*
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
