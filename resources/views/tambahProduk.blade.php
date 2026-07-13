@@ -1,56 +1,42 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Kelas Baru</title>
+</head>
+<body>
+    <h1>Tambah Kelas Baru</h1>
 
-@section('title', 'Tambah Produk')
+    <!-- Tampilkan pesan sukses jika ada -->
+    @if(session('success'))
+        <div style="color: green;">{{ session('success') }}</div>
+    @endif
 
-@section('content')
-    <div class="card">
-        <h2 style="margin-bottom: 20px; color: #1b2d4f;">Tambah Produk</h2>
-      
-        <!-- Tampilkan pesan sukses jika ada -->
-        @if(session('success'))
-            <div style="background-color: #e6f4ea; color: #1e8e3e; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px;">
-                {{ session('success') }}
-            </div>
-        @endif
-      
-        <!-- Tampilkan pesan error jika ada -->
-        @if(session('error'))
-            <div style="background-color: #fce8e6; color: #d93025; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px;">
-                {{ session('error') }}
-            </div>
-        @endif
-      
-        <form action="{{ route('produk.submit') }}" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 16px;">
-            @csrf
-            
-            <div>
-                <label for="nama" style="display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px;">Nama Produk:</label>
-                <input type="text" id="nama" name="nama" style="width: 100%; padding: 10px 12px; border: 1px solid #cce0ff; border-radius: 6px; font-family: inherit;">
-            </div>
-      
-            <div>
-                <label for="harga" style="display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px;">Harga:</label>
-                <input type="number" id="harga" name="harga" style="width: 100%; padding: 10px 12px; border: 1px solid #cce0ff; border-radius: 6px; font-family: inherit;">
-            </div>
-      
-            <div>
-                <label for="stok" style="display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px;">Stok:</label>
-                <input type="number" id="stok" name="stok" style="width: 100%; padding: 10px 12px; border: 1px solid #cce0ff; border-radius: 6px; font-family: inherit;">
-            </div>
-      
-            <div>
-                <label for="kategori" style="display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px;">Kategori:</label>
-                <input type="text" id="kategori" name="kategori" style="width: 100%; padding: 10px 12px; border: 1px solid #cce0ff; border-radius: 6px; font-family: inherit;">
-            </div>
-      
-            <div>
-                <label for="gambar" style="display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px;">Gambar:</label>
-                <input type="file" id="gambar" name="gambar" style="width: 100%; padding: 8px 12px; border: 1px dashed #1b3a6b; border-radius: 6px; font-family: inherit; background: #f8fafe;">
-            </div>
-      
-            <div style="margin-top: 10px;">
-                <button type="submit" class="btn-primary" style="width: 100%;">Submit Produk</button>
-            </div>
-        </form>
-    </div>
-@endsection
+    <!-- Tampilkan pesan error jika ada -->
+    @if(session('error'))
+        <div style="color: red;">{{ session('error') }}</div>
+    @endif
+
+    <form action="{{ route('produk.submit') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+
+        <label for="nama">Nama Kelas / Kursus:</label><br>
+        <input type="text" id="nama" name="nama" placeholder="Contoh: Kelas Dasar CSS"><br>
+
+        <label for="harga">Harga Kelas (Rp):</label><br>
+        <input type="number" id="harga" name="harga" placeholder="Contoh: 150000"><br>
+
+        <label for="stok">Kuota Peserta (Sisa Slot):</label><br>
+        <input type="number" id="stok" name="stok" placeholder="Contoh: 50"><br>
+
+        <label for="kategori">Kategori:</label><br>
+        <input type="text" id="kategori" name="kategori" placeholder="Contoh: Front-End / Back-End / Dasar"><br>
+
+        <label for="gambar">Thumbnail Kelas:</label><br>
+        <input type="file" id="gambar" name="gambar"><br>
+
+        <button type="submit">Tambah Kelas</button>
+    </form>
+</body>
+</html>
