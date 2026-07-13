@@ -149,8 +149,13 @@
         <ul class="navbar-menu">
             <li><a href="{{ route('portfolio.home') }}">Home</a></li>
             <li><a href="{{ route('portfolio.profil') }}">Profil</a></li>
-            <li><a href="{{ route('portfolio.pendidikan') }}">Pendidikan</a></li>
-            <li><a href="{{ route('portfolio.keahlian') }}">Keahlian</a></li>
+            <li style="margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px;">
+                <a href="{{ route('mahasiswa.index') }}">Mahasiswa</a>
+            </li>
+            <li><a href="{{ route('nilai.index') }}">Data Nilai</a></li>
+            <li style="margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px;">
+                <a href="{{ route('produk.data') }}">Bootcamp</a>
+            </li>
         </ul>
     </nav>
 
