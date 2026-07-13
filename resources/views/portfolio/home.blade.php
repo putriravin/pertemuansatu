@@ -23,8 +23,8 @@
         <p>
             Website ini dibangun menggunakan framework <strong>Laravel</strong> sebagai bagian dari
             tugas modul 3 Praktikum Web II. Materi yang dipelajari pada modul ini meliputi
-            penggunaan <em>Blade Templating Engine</em>, pembuatan layout dengan <code>@extends</code>
-            dan <code>@section</code>, serta pengiriman data dari controller ke view menggunakan
+            penggunaan <em>Blade Templating Engine</em>, pembuatan layout dengan <code>@@extends</code>
+            dan <code>@@section</code>, serta pengiriman data dari controller ke view menggunakan
             fungsi <code>compact()</code>.
         </p>
     </div>
