@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GreetingsController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Rute Dasar
+Route::get('/', [GreetingsController::class, 'welcome']);
+
+// Rute dengan Parameter
+Route::get('/hello/{name}/{npm}', [GreetingsController::class, 'greet']);
