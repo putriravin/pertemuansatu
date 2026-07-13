@@ -151,6 +151,10 @@
             <li><a href="{{ route('portfolio.profil') }}">Profil</a></li>
             <li><a href="{{ route('portfolio.pendidikan') }}">Pendidikan</a></li>
             <li><a href="{{ route('portfolio.keahlian') }}">Keahlian</a></li>
+            <li style="margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px;">
+                <a href="{{ route('produk.data') }}">Lihat Produk</a>
+            </li>
+            <li><a href="{{ route('produk.submit') }}">Tambah Produk</a></li>
         </ul>
     </nav>
 
