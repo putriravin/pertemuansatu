@@ -15,9 +15,24 @@ Route::get('/portfolio/profil', [PortfolioController::class, 'profil'])->name('p
 Route::get('/portfolio/pendidikan', [PortfolioController::class, 'pendidikan'])->name('portfolio.pendidikan');
 Route::get('/portfolio/keahlian', [PortfolioController::class, 'keahlian'])->name('portfolio.keahlian');
 
-// Modul 4: Produk
+// Modul 4: Produk (Bootcamp)
 Route::get('/tambah-produk', function () {
     return view('tambahProduk');
 });
 Route::post('/tambah-produk', [ProdukController::class, 'insert'])->name('produk.submit');
 Route::get('/data-produk', [ProdukController::class, 'index'])->name('produk.data');
+
+// Test Modul 4 Halaman 47: Lihat Data Daerah
+Route::get('/cek-lokasi', function () {
+    // Ambil data provinsi beserta relasinya (kota -> kecamatan -> kelurahan)
+    $data = App\Models\Provinsi::with('kota.kecamatan.kelurahan')->get();
+    return response()->json($data, 200, [], JSON_PRETTY_PRINT);
+});
+
+// Modul 5: CRUD Mahasiswa dan Nilai
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\NilaiController;
+
+Route::resource('mahasiswa', MahasiswaController::class);
+Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai.index');
+Route::get('/nilai/{mahasiswaId}', [NilaiController::class, 'showNilaiMahasiswa'])->name('tampilnilai');
