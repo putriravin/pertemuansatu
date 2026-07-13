@@ -1,6 +1,6 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-## Tugas Praktikum Web II - Modul 1 & Modul 2
+## Tugas Praktikum Web II - Modul 1, 2, & 3
 
 **Nama:** Putri Ravin Nauli  
 **NPM:** 238160073  
@@ -20,6 +20,16 @@ Repositori ini dibuat untuk memenuhi tugas Praktikum Aplikasi Berbasis Web II.
 - [x] Membuat Rute dengan Parameter (nama & NPM)
 - [x] Membuat Kontroler (`GreetingsController`)
 - [x] Menghubungkan Kontroler dengan Rute
+- [x] Uji Coba Aplikasi (Localhost)
+
+### Status Tugas Modul 3:
+- [x] Membuat Kontroler Portfolio (`PortfolioController`)
+- [x] Membuat Layout Utama Blade (`app.blade.php`)
+- [x] Membuat View Home (`home.blade.php`)
+- [x] Membuat View Profil (`profil.blade.php` dengan data dari Kontroler)
+- [x] Membuat View Pendidikan (`pendidikan.blade.php` dengan data dari Kontroler)
+- [x] Membuat View Keahlian (`keahlian.blade.php` dengan perulangan foreach dari Kontroler)
+- [x] Mengatur Routing untuk masing-masing halaman
 - [x] Uji Coba Aplikasi (Localhost)
 
 ---
