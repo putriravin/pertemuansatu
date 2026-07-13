@@ -1,0 +1,42 @@
+@extends('layouts.app')
+
+@section('title', 'Login')
+
+@section('content')
+    <div style="max-width: 500px; margin: 40px auto;">
+        <div class="card">
+            <h2 style="margin-bottom: 6px; color: #1b2d4f; text-align: center;">Login</h2>
+            <p class="text-secondary" style="margin-bottom: 24px; text-align: center;">Masuk ke akun Anda</p>
+
+            @if(session('error'))
+                <div style="background-color: #fce8e6; color: #d93025; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; text-align: center;">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('cek-login') }}">
+                @csrf
+
+                <div style="margin-bottom: 16px;">
+                    <label for="email" style="display: block; font-size: 13px; font-weight: 600; color: #1b3a6b; margin-bottom: 6px;">Email Address:</label>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus style="width: 100%; padding: 10px 14px; border: 1px solid #d0daf0; border-radius: 8px; font-size: 14px; font-family: inherit; outline: none;">
+                    @error('email') <span style="color: #d93025; font-size: 12px; margin-top: 4px; display: block;">{{ $message }}</span> @enderror
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label for="password" style="display: block; font-size: 13px; font-weight: 600; color: #1b3a6b; margin-bottom: 6px;">Password:</label>
+                    <input id="password" type="password" name="password" required style="width: 100%; padding: 10px 14px; border: 1px solid #d0daf0; border-radius: 8px; font-size: 14px; font-family: inherit; outline: none;">
+                    @error('password') <span style="color: #d93025; font-size: 12px; margin-top: 4px; display: block;">{{ $message }}</span> @enderror
+                </div>
+
+                <div style="margin-bottom: 24px; text-align: center;">
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 12px;">Login</button>
+                </div>
+                
+                <div style="text-align: center; font-size: 14px;">
+                    <a href="{{ route('register') }}" style="color: #1b3a6b; text-decoration: none;">Belum punya akun? Daftar di sini</a>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection

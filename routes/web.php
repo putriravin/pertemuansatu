@@ -36,3 +36,29 @@ use App\Http\Controllers\NilaiController;
 Route::resource('mahasiswa', MahasiswaController::class);
 Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai.index');
 Route::get('/nilai/{mahasiswaId}', [NilaiController::class, 'showNilaiMahasiswa'])->name('tampilnilai');
+
+// Route bawaan Laravel UI (Kecuali login & logout karena kita buat manual di bawah)
+Auth::routes(['login' => false, 'logout' => false]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Modul 6 Praktikum 2: Manual Auth
+use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::post('/login', [AuthController::class, 'cekLogin'])->name('cek-login');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'Anda telah logout.');
+    })->name('logout');
+});
