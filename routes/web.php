@@ -57,6 +57,26 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
     
+    // Modul 7: Role Middleware Routes
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/admin', function () {
+            return view('admin');
+        })->name('admin');
+    });
+
+    Route::middleware(['role:owner'])->group(function () {
+        Route::get('/owner', function () {
+            return view('owner');
+        })->name('owner');
+    });
+
+    // Modul 7: Usia Middleware Route (Tugas Hal 91)
+    Route::middleware(['usia'])->group(function () {
+        Route::get('/halaman-dewasa', function () {
+            return view('dewasa');
+        })->name('dewasa');
+    });
+    
     Route::get('/logout', function () {
         Auth::logout();
         return redirect()->route('login')->with('success', 'Anda telah logout.');
