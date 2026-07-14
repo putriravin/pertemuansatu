@@ -6,25 +6,30 @@
     <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <h2 style="color: #1b2d4f; margin: 0;">Daftar File yang Diupload</h2>
-            <a href="{{ route('upload.form') }}" class="btn-primary" style="padding: 8px 18px; font-size: 13px;">⬆️ Upload File Baru</a>
+            <a href="{{ route('upload.form') }}" class="btn-primary" style="padding: 8px 18px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                Upload File Baru
+            </a>
         </div>
         <p class="text-secondary" style="margin-bottom: 24px;">Semua file gambar yang telah diupload ke server tersimpan di sini.</p>
 
         {{-- Notifikasi --}}
         @if(session('success'))
-            <div style="background-color: #e6f4ea; color: #1e8e3e; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px;">
-                ✅ {{ session('success') }}
+            <div style="background-color: #e6f4ea; color: #1e8e3e; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                {{ session('success') }}
             </div>
         @endif
 
         @if(count($files) === 0)
             <div style="text-align: center; padding: 60px 0; color: #aaa;">
-                <div style="font-size: 52px; margin-bottom: 14px;">📭</div>
-                <p style="font-size: 15px;">Belum ada file yang diupload.</p>
-                <a href="{{ route('upload.form') }}" class="btn-primary" style="display: inline-block; margin-top: 12px; padding: 10px 20px;">Upload Sekarang</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 24 24" stroke="#ccc" stroke-width="1" style="margin-bottom: 16px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+                </svg>
+                <p style="font-size: 15px; margin-bottom: 16px;">Belum ada file yang diupload.</p>
+                <a href="{{ route('upload.form') }}" class="btn-primary" style="display: inline-block; padding: 10px 20px;">Upload Sekarang</a>
             </div>
         @else
-            {{-- Tugas 2: Tabel Daftar File dengan link Download --}}
             <div style="overflow-x: auto;">
                 <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
                     <thead>
@@ -45,20 +50,22 @@
                                 </td>
                                 <td style="padding: 14px 16px; color: #1b2d4f; font-weight: 500;">{{ basename($file) }}</td>
                                 <td style="padding: 14px 16px;">
-                                    {{-- Tugas 2: Link Download --}}
+                                    {{-- Download --}}
                                     <a href="{{ Storage::disk('public')->url($file) }}" download
-                                       style="background: #e8f0fe; color: #1b3a6b; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600; margin-right: 6px;">
-                                        ⬇️ Download
+                                       style="background: #e8f0fe; color: #1b3a6b; padding: 7px 14px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600; margin-right: 6px; display: inline-flex; align-items: center; gap: 5px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                        Download
                                     </a>
 
-                                    {{-- Tugas 3: Tombol Hapus --}}
+                                    {{-- Hapus --}}
                                     <form action="{{ route('files.delete', basename($file)) }}" method="POST" style="display: inline;"
                                           onsubmit="return confirm('Hapus file {{ basename($file) }}?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            style="background: #fce8e6; color: #d93025; padding: 6px 14px; border-radius: 6px; border: none; font-size: 12px; font-weight: 600; cursor: pointer;">
-                                            🗑️ Hapus
+                                            style="background: #fce8e6; color: #d93025; padding: 7px 14px; border-radius: 6px; border: none; font-size: 12px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                            Hapus
                                         </button>
                                     </form>
                                 </td>
