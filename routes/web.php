@@ -44,6 +44,14 @@ Route::post('/upload', [FileUploadController::class, 'storeFile'])->name('upload
 Route::get('/files', [FileUploadController::class, 'listFiles'])->name('files.list');
 Route::delete('/files/{filename}', [FileUploadController::class, 'deleteFile'])->name('files.delete');
 
+// Modul 9: Scan QR & Barcode
+use App\Http\Controllers\ScanController;
+Route::get('/scan-kamera', function () {
+    return view('scankode');
+})->name('scan.kamera');
+Route::get('/scan-data-produk', [ScanController::class, 'index'])->name('scan.data');
+Route::post('/scan-produk', [ScanController::class, 'processScanProduk']);
+
 
 // Route bawaan Laravel UI (Kecuali login & logout karena kita buat manual di bawah)
 Auth::routes(['login' => false, 'logout' => false]);
