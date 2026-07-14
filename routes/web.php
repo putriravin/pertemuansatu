@@ -37,6 +37,14 @@ Route::resource('mahasiswa', MahasiswaController::class);
 Route::get('/nilai', [NilaiController::class, 'index'])->name('nilai.index');
 Route::get('/nilai/{mahasiswaId}', [NilaiController::class, 'showNilaiMahasiswa'])->name('tampilnilai');
 
+// Modul 8: Manajemen File Uploads
+use App\Http\Controllers\FileUploadController;
+Route::get('/upload', [FileUploadController::class, 'showUploadForm'])->name('upload.form');
+Route::post('/upload', [FileUploadController::class, 'storeFile'])->name('upload.store');
+Route::get('/files', [FileUploadController::class, 'listFiles'])->name('files.list');
+Route::delete('/files/{filename}', [FileUploadController::class, 'deleteFile'])->name('files.delete');
+
+
 // Route bawaan Laravel UI (Kecuali login & logout karena kita buat manual di bawah)
 Auth::routes(['login' => false, 'logout' => false]);
 

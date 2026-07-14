@@ -156,6 +156,7 @@
             <li style="margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px;">
                 <a href="{{ route('produk.data') }}">Bootcamp</a>
             </li>
+            <li><a href="{{ route('upload.form') }}">Upload</a></li>
             <li style="margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px;">
                 @guest
                     <a href="{{ route('login') }}" style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px;">Login</a>
