@@ -25,13 +25,23 @@ class PortfolioController extends Controller
         $title = "Pendidikan";
         $kampus = "Universitas Medan Area";
         $prodi = "Teknik Informatika";
-        return view('portfolio.pendidikan', compact('title', 'kampus', 'prodi'));
+        $matakuliah = "Aplikasi Berbasis Web II";
+        return view('portfolio.pendidikan', compact('title', 'kampus', 'prodi', 'matakuliah'));
     }
 
     public function keahlian()
     {
         $title = "Keahlian";
-        $skills = ["HTML", "CSS", "PHP", "Laravel", "JavaScript"];
+        // Disesuaikan dengan materi RPS Aplikasi Berbasis Web II
+        $skills = [
+            "Konsep MVC (Model-View-Controller)",
+            "Pengembangan CMS Sederhana",
+            "Routing, Controller, dan Views",
+            "Database Migration & ORM",
+            "Sistem Autentikasi & Middleware",
+            "Manajemen File Upload",
+            "Pengembangan RESTful API"
+        ];
         return view('portfolio.keahlian', compact('title', 'skills'));
     }
 }

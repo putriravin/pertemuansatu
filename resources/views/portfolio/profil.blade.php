@@ -6,8 +6,8 @@
 
     <div class="card">
         <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
-            <div style="width: 90px; height: 90px; background-color: #1b3a6b; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="color: white; font-size: 36px; font-weight: 700;">{{ substr($nama, 0, 1) }}</span>
+            <div style="width: 100px; height: 100px; margin-right: 10px; border-radius: 50%; overflow: hidden; border: 3px solid #1b3a6b; flex-shrink: 0;">
+                <img src="{{ asset('images/sample.jpeg') }}" alt="Profile Putri" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div>
                 <h2 style="margin-bottom: 4px;">{{ $nama }}</h2>
