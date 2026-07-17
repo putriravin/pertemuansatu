@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - Portfolio Mahasiswa</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
     <style>
         * {
             margin: 0;
@@ -183,5 +184,10 @@
         &copy; {{ date('Y') }} Putri Ravin Nauli &mdash; Praktikum Web II, Teknik Informatika UMA
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    @include('sweetalert::alert')
+    @stack('scripts')
 </body>
 </html>

@@ -21,6 +21,7 @@ Route::get('/tambah-produk', function () {
 });
 Route::post('/tambah-produk', [ProdukController::class, 'insert'])->name('produk.submit');
 Route::get('/data-produk', [ProdukController::class, 'index'])->name('produk.data');
+Route::get('/data-produk-ajax', [ProdukController::class, 'getDatatables'])->name('produk.data-ajax');
 
 // Test Modul 4 Halaman 47: Lihat Data Daerah
 Route::get('/cek-lokasi', function () {

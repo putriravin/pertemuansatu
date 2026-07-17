@@ -20,26 +20,34 @@ class ScanController extends Controller
         ]);
 
         $code = $request->input('code');
-        $product = Produk::where('sku', $code)->first();
+
+        // Cari produk berdasarkan SKU atau ID
+        $product = Produk::where('sku', $code)
+                         ->orWhere('id', is_numeric($code) ? $code : null)
+                         ->orWhere('nama', $code)
+                         ->first();
 
         if ($product) {
             return response()->json([
                 'success' => true,
-                'code' => $code,
+                'code'    => $code,
                 'product' => [
-                    'name' => $product->nama,
-                    'sku' => $product->sku,
-                    'price' => $product->harga,
+                    'name'     => $product->nama,
+                    'sku'      => $product->sku,
+                    'price'    => $product->harga,
+                    'stok'     => $product->stok,
                     'kategori' => $product->kategori,
-                    'image' => asset(str_replace('public/', 'storage/', $product->gambar)),
+                    'image'    => $product->gambar
+                                    ? asset(str_replace('storage/', 'storage/', $product->gambar))
+                                    : null,
                 ]
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'message' => 'Produk tidak ditemukan.',
-            'code' => $code
+            'message' => 'Produk dengan SKU "' . $code . '" tidak ditemukan di database.',
+            'code'    => $code
         ]);
     }
 }

@@ -42,24 +42,39 @@
                     </thead>
                     <tbody>
                         @foreach ($files as $index => $file)
+                            @php
+                                $filename = basename($file);  // Ambil nama file asli
+                                $imageUrl = asset('storage/' . $file); // URL gambar yang benar
+                            @endphp
                             <tr style="border-bottom: 1px solid #eef0f5;">
                                 <td style="padding: 14px 16px; color: #777;">{{ $index + 1 }}</td>
+
+                                {{-- Preview Gambar --}}
                                 <td style="padding: 14px 16px;">
-                                    <img src="{{ Storage::disk('public')->url($file) }}" alt="{{ basename($file) }}"
-                                         style="width: 64px; height: 64px; object-fit: cover; border-radius: 6px; border: 1px solid #eef0f5;">
+                                    <img src="{{ $imageUrl }}" alt="{{ $filename }}"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                         style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid #e0e7ef; display: block;">
+                                    <div style="display: none; width: 80px; height: 80px; background: #f3f6fb; border-radius: 8px; border: 1px solid #e0e7ef; align-items: center; justify-content: center;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#ccc" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                    </div>
                                 </td>
-                                <td style="padding: 14px 16px; color: #1b2d4f; font-weight: 500;">{{ basename($file) }}</td>
+
+                                {{-- Nama File Asli --}}
+                                <td style="padding: 14px 16px; color: #1b2d4f; font-weight: 600;">
+                                    {{ $filename }}
+                                </td>
+
                                 <td style="padding: 14px 16px;">
                                     {{-- Download --}}
-                                    <a href="{{ Storage::disk('public')->url($file) }}" download
+                                    <a href="{{ $imageUrl }}" download="{{ $filename }}"
                                        style="background: #e8f0fe; color: #1b3a6b; padding: 7px 14px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600; margin-right: 6px; display: inline-flex; align-items: center; gap: 5px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                                         Download
                                     </a>
 
                                     {{-- Hapus --}}
-                                    <form action="{{ route('files.delete', basename($file)) }}" method="POST" style="display: inline;"
-                                          onsubmit="return confirm('Hapus file {{ basename($file) }}?')">
+                                    <form action="{{ route('files.delete', $filename) }}" method="POST" style="display: inline;"
+                                          onsubmit="return confirm('Hapus file {{ $filename }}?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
