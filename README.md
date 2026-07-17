@@ -4,7 +4,6 @@
 
 **Nama:** Putri Ravin Nauli  
 **NPM:** 238160073  
-**Alamat:** Jalan Pancing, Sekitar Universitas Medan Area  
 
 Repositori ini dibuat untuk memenuhi tugas Praktikum Aplikasi Berbasis Web II.
 
